@@ -3,7 +3,7 @@ package getter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.awt.*;
+
 
 @SpringBootApplication
 public class ContentGetterApplication{
@@ -12,7 +12,7 @@ public class ContentGetterApplication{
         SpringApplication.run(ContentGetterApplication.class, args);
 
         CententGetter cententGetter = new CententGetter();
-        cententGetter.get("https://berta.me/images-or-text-does-one-demand-higher-priority-than-the-other/");
+        cententGetter.get("https://www.york.ac.uk/teaching/cws/wws/webpage1.html");
 
 
 
