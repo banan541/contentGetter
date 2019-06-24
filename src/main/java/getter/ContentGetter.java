@@ -2,9 +2,9 @@ package getter;
 
 import java.awt.*;
 
-public class CententGetter {
+public class ContentGetter {
 
-    public void get(String url){
+    public String getText(String url){
 
         ExecuteGet get = new ExecuteGet();
         String allContent = get.execute(url,"");
@@ -14,13 +14,24 @@ public class CententGetter {
         //Znajdź text
         toSave = cs.searchText(allContent, "<\\s*p[^>]*>(.*?)<\\s*/\\s*p>");
         cs.save(toSave);
-        //Znajdź link do zdjęcia
+        return toSave;
+    }
+
+    public Image getImg(String url){
+
+        ExecuteGet get = new ExecuteGet();
+        String allContent = get.execute(url,"");
+
+        ContentSave cs = new ContentSave();
         String imgLink = "";
         imgLink = cs.searchText(allContent,"<img[^>]+src=\"([^\">]+)\"" );
-//        cs.save(imgLink);
-        Image image = null;
-        image = cs.imageFromLink(imgLink);
+        Image image = cs.imageFromLink(imgLink);
         cs.saveImg(image);
+        return image;
+    }
 
+    public void getAll(String url) {
+        getText(url);
+        getImg(url);
     }
 }
